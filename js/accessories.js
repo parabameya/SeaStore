@@ -2,7 +2,8 @@ $(document).ready(pageLoad);
 
 function pageLoad()
 {
-	var category="mobile";
+	console.log("accessories");
+	var category="accessories";
 $.ajax({
 			url: "php/product.php",
 			type: "POST",
@@ -19,8 +20,7 @@ var div=document.getElementById("main_php_products");
 var newdiv;
 $.each(obj, function(index, element)
 	{	
-		var id=obj[index].product_id;
-		newdiv="<div class='grid_1_of_3 images_1_of_3'><img height='162px' width='162px' src='";
+		newdiv="<div class='grid_1_of_3 images_1_of_3'><img width='250px' src='";
 		newdiv+="http://localhost:8080/Seastore/images/products/";
 		newdiv+=obj[index].producttitle;
 		newdiv+=".jpg";
@@ -33,16 +33,10 @@ $.each(obj, function(index, element)
 		newdiv+="</p>";
 		newdiv+="<div class='price-details'><div class='price-number'><p><span class='rupees'> $";
 		newdiv+=obj[index].productprice;
-		newdiv+="</span></p></div><div id='add-to-cart' class='add-cart'><h4><a id="+id+">Add to Cart</a></h4></div></div>";
+		newdiv+="</span></p></div><div class='add-cart'><h4><a href='#'>Add to Cart</a></h4></div></div>";
 		newdiv+="</div>";
 
 		$(div).append(newdiv);
 		newdiv=null;
 	});
 }
-
-function addToCart(pId)
-{
-	alert(pId);
-}
-

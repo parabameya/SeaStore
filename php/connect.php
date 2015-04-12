@@ -1,13 +1,11 @@
 <?php
 //settings for connecting to MySQL
-
 $user = 'root';
 $password = 'root';
 $db = 'seastore';
-$host = 'localhost';
-$port = 8889;
+$socket = 'localhost:/Applications/MAMP/tmp/mysql/mysql.sock';
 $link = mysql_connect(
-   "$host:$port", 
+   $socket, 
    $user, 
    $password
 );

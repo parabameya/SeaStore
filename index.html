@@ -1,3 +1,12 @@
+
+<?php
+session_start();
+if(!isset($_SESSION['loginstatus']))
+	$_SESSION['loginstatus']=false;
+$status=$_SESSION['loginstatus'];
+
+?>
+
 <!DOCTYPE HTML>
 <head>
 <title>SEA TECH</title>
@@ -5,36 +14,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script> 
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/startstop-slider.js"></script>
-<script src="js/main.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
+
 <body>
+
   <div class="wrap">
 	<div class="header">
 		<div class="headertop_desc">
 			<div class="call">
 				 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
 			</div>
+			
 			<div class="account_desc">
 				<ul>
-					<li><a href="#">Register</a></li>
-					<li><a href="#">Login</a></li>
+	        <?php 
+			
+	        if ($status) { ?>
+            <li><a href="php/logout.php" title="">Logout</a></li>            
+        <?php } else { ?>
+            <li><a href="login.html" title="">Login/Register</a></li>   
+        <?php } ?>
 					<li><a href="#">Delivery</a></li>
 					<li><a href="#">Checkout</a></li>
 					<li><a href="#">My Account</a></li>
 				</ul>
 			</div>
-			<div class="clear"></div>
 		</div>
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				<a href="index.html"><img src="images/logo.jpg" alt="" /></a>
 			</div>
 			  <div class="cart">
-			  	   <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
+			  	   <p>Welcome 
+    <?php 
+		if(isset($_SESSION['username']))
+			$user=$_SESSION['username'];
+		echo '<span>';
+		echo $user;
+		echo '</span>';
+		?> to our Online Store! 
+
+		<span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
 			  	   	<ul class="dropdown">
 							<li>you have no items in your Shopping cart</li>
 					</ul></div></p>
@@ -76,14 +103,14 @@
 			    	<li><a href="about.html">About</a></li>
 			    	<li><a href="delivery.html">Delivery</a></li>
 			    	<li><a href="contact.html">Contact</a></li>
-			    	<div class="clear"></div>
      			</ul>
 	     	</div>
-	     	<div class="search_box">
+	     	<!-- <div class="search_box">
 	     		<form>
 	     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
 	     		</form>
 	     	</div>
+	     	 -->
 	     	<div class="clear"></div>
 	     </div>	     
 	<div class="header_slide">
@@ -91,10 +118,9 @@
 				<div class="categories">
 				  <ul>
 				  	<h3>Categories</h3>
-				      <li><a href="mobile.html">Mobile Phones</a></li>
-				      <li><a href="television.html">Television</a></li>
-				      <li><a href="laptop.html">Laptop</a></li>
-				      <li><a href="accessories.html">Accessories</a></li>
+				      <li><a href="mobile.html" id="mobile">Mobile Phones</a></li>
+				      <li><a href="laptop.html" id="laptop">Laptop</a></li>
+				      <li><a href="accessories.html" id="accessories">Accessories</a></li>
 				  </ul>
 				</div>					
 	  	     </div>
@@ -319,4 +345,3 @@
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
 </body>
 </html>
-
