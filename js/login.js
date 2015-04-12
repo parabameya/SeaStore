@@ -13,7 +13,39 @@ $.ajax({
 		});
 	
 }
-function register(){
+function fetchData(data){
+	obj = JSON.parse(data);
+	console.log(obj);
+	if(data == "SUCCESS")
+	{
+		window.location.assign("http://localhost:8080/SeaStoreGit/index.html");
+		console.log("Success");
+	}	
+	if(data == "FAIL" || data == "" || data == null) 
+	{
+		fail(data);
+		alert("Login Failed");
+		return;
+	}
+}
+
+function fail(data)
+{
+	attempt --;// Decrementing by one.
+	alert("You have left "+attempt+" attempt;");
+	if( attempt == 0)
+	{
+		document.getElementById("username").disabled = true;
+		document.getElementById("password").disabled = true;
+		document.getElementById("submit").disabled = true;
+		return false;
+	}
+}
+
+
+
+function register()
+{
 	var username = document.getElementById("reg_username").value;
 	var password = document.getElementById("reg_password").value;
 	var name = document.getElementById("name").value;
@@ -23,34 +55,16 @@ function register(){
 	$.ajax({
 			url: "php/register.php",
 			type: "POST",
-			data: { Username: "'" + username + "'", Pwd: "'" + password + "'", Email: "'" + email + "'", Address: "'" + address + "'", PhoneNo: "'" + phoneno + "'", Name: "'" + name + "'"},
+			data: { User: "'" + username + "'", Paswd: "'" + password + "'", Email: "'" + email + "'", Address: "'" + address + "'", PhoneNo: "'" + phoneno + "'", Name: "'" + name + "'"},
 			dataType:"text",
 			success: fnsuccess
 		});
 }
 function fnsuccess(data){
 	alert("Successfull");
-	window.location = "login.html#login";
+	window.location.assign("http://localhost:8080/SeaStoreGit/login.html");
 }
 
-function fetchData(data){
-	obj = JSON.parse(data);
-	if(obj == "" || obj==null)
-		{
-			fail(data);
-			alert("Login Failed");
-			return;
-		}
-	window.location = "index.html"; 
-	}
 
-	function fail(data){
-	attempt --;// Decrementing by one.
-	alert("You have left "+attempt+" attempt;");
-	if( attempt == 0){
-		document.getElementById("username").disabled = true;
-		document.getElementById("password").disabled = true;
-		document.getElementById("submit").disabled = true;
-		return false;
-	}
-}
+
+

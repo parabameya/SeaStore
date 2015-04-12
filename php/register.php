@@ -4,14 +4,12 @@ include "connect.php";
 
 //validating whether the post value is set and not null
 try{
-	session_start();
-	$_SESSION["loginstatus"]=false;
-$username = $_POST["Username"];
-$password = $_POST["Pwd"];
-$name = $_POST["Name"];
-$email = $_POST["Email"];
-$phoneno = $_POST["PhoneNo"];
-$address = $_POST["Address"];
+	$username = $_POST["User"];
+	$password = $_POST["Paswd"];
+	$name = $_POST["Name"];
+	$email = $_POST["Email"];
+	$phoneno = $_POST["PhoneNo"];
+	$address = $_POST["Address"];
 
 	//querying the database
 	$query = "insert into user VALUES (" . $username . "," . $name . "," . $email . "," . $password . "," . $address . "," . $phoneno . ")";
