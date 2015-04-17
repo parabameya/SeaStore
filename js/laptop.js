@@ -39,3 +39,21 @@ $.each(obj, function(index, element)
 		newdiv=null;
 	});
 }
+
+
+
+function updateCart(data) 
+{
+$.ajax({
+			url: "php/update-cart.php",
+			type: "POST",
+			data: { productTitle: "'" + data + "'" },
+			dataType:"text",
+			success : printCart
+		});
+}
+
+function printCart(data)
+{
+	console.log(data);
+}
