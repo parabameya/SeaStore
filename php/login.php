@@ -5,7 +5,6 @@ include "connect.php";
 //validating whether the post value is set and not null
 try{
 	session_start();
-	
 $username = $_POST["Username"];
 $password = $_POST["Pwd"];
 
@@ -39,16 +38,10 @@ $password = $_POST["Pwd"];
 		if(isset($_SESSION['username']))
 		{
 			$_SESSION['loginstatus']=true;
-			$url ='http://localhost:8080/SeaStoreGit/index.html';
+		//	echo "SUCCESS";
 		}
-		else
-		{
-			$url ='http://localhost:8080/SeaStoreGit/login.html';
-		}
-	echo json_encode($json);
+	 echo json_encode($json);
 	mysql_close($conn);
-		header( "Location: $url" );
-
 }
 catch(Exception $e)
 {

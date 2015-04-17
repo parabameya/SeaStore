@@ -21,7 +21,7 @@ $.each(obj, function(index, element)
 	{	
 		var id=obj[index].product_id;
 		newdiv="<div class='grid_1_of_3 images_1_of_3'><img height='162px' width='162px' src='";
-		newdiv+="http://localhost:8080/Seastore/images/products/";
+		newdiv+="http://localhost:8080/SeaStoreGit/images/products/";
 		newdiv+=obj[index].producttitle;
 		newdiv+=".jpg";
 		newdiv+="' alt='";
