@@ -21,7 +21,7 @@ $.each(obj, function(index, element)
 	{	
 		var id=obj[index].product_id;
 		newdiv="<div class='grid_1_of_3 images_1_of_3'>";
-		newdiv+="<form method='POST' onSubmit='updateCart("+obj[index].product_id+")'>"
+		newdiv+="<form method='POST' onSubmit='updateCart("+obj[index].product_id+","+obj[index].productprice+")'>"
 		newdiv+="<img height='162px' width='162px' src='";
 		newdiv+="http://localhost:8080/SeaStoreGit/images/products/";
 		newdiv+=obj[index].producttitle;
@@ -45,25 +45,13 @@ $.each(obj, function(index, element)
 	});
 }
 
-function addToCart(pId)
-{
-	alert(pId);
-}
 
 
-
-function updateCart(data) 
+function updateCart(title,price) 
 {
 $.ajax({
 			url: "php/update-cart.php",
 			type: "POST",
-			data: { productTitle: "'" + data + "'" },
-			dataType:"text",
-			success : printCart
+			data: { productTitle: "'" + title + "'", productPrice: "'" + price}
 		});
-}
-
-function printCart(data)
-{
-	console.log(data);
 }

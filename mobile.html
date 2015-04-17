@@ -59,9 +59,41 @@ $status=$_SESSION['loginstatus'];
 		echo '</span>';
 		?> to our Online Store! 
 
-		<span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
-			  	   	<ul class="dropdown">
-							<li>you have no items in your Shopping cart</li>
+		<span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 
+<?php
+if(isset($_SESSION['cart']))
+{
+$cart=$_SESSION['cart'];
+$cartPrice=$_SESSION['cart-price'];
+$cartArray= explode(",", $cart);
+echo count($cartArray);
+if(count($cartArray) === 1 )
+{	
+	echo " item";
+}
+else
+{
+	echo " items";
+}
+echo " - $<b>";
+echo $cartPrice;
+echo "</b><ul class='dropdown'><li>You have " . count($cartArray);
+if(count($cartArray) === 1 )
+{	
+	echo " item";
+}
+else
+{
+	echo " items";
+}
+echo " in your Shopping cart</li>";
+}
+else
+{
+	echo "0 item(s) - $0.00";
+	echo "<ul class='dropdown'><li>You have No items in your Shopping cart</li>";
+}
+?>
 					</ul></div></p>
 			  </div>
 			  <script type="text/javascript">
@@ -111,6 +143,10 @@ $status=$_SESSION['loginstatus'];
 	     	 -->
 	     	<div class="clear"></div>
 	     </div>	    
+
+
+
+
 <div class="main">
 
     <div class="content">

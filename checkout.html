@@ -1,0 +1,311 @@
+<!--
+The MIT License (MIT)
+
+Copyright (c) 2015 William Hilton
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<!-- Vendor libraries -->
+
+<?php
+session_start();
+if(!isset($_SESSION['loginstatus']))
+    $_SESSION['loginstatus']=false;
+$status=$_SESSION['loginstatus'];
+
+?>
+
+<!DOCTYPE HTML>
+<head>
+<title>SEA TECH</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/startstop-slider.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
+
+<!-- If you're using Stripe for payments -->
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+<!-- Credit card form -->
+<body>
+     <div class="wrap">
+    <div class="header">
+        <div class="headertop_desc">
+            <div class="call">
+                 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
+            </div>
+            
+            <div class="account_desc">
+                <ul>
+            <?php 
+            if ($status) {  ?>
+            <li><a href="php/logout.php" title="">Logout</a></li>            
+        <?php } else { ?>
+            <li><a href="login.html" title="">Login/Register</a></li>   
+        <?php } ?>
+                    <li><a href="#">Delivery</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li><a href="#">My Account</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header_top">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.jpg" alt="" /></a>
+            </div>
+              <div class="cart">
+                   <p>Welcome 
+    <?php 
+        if(isset($_SESSION['username']))
+            $user=$_SESSION['username'];
+        echo '<span>';
+        echo $user;
+        echo '</span>';
+        ?> to our Online Store! 
+
+        <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 
+<?php
+if(isset($_SESSION['cart']))
+{
+$cart=$_SESSION['cart'];
+$cartPrice=$_SESSION['cart-price'];
+$cartArray= explode(",", $cart);
+echo count($cartArray);
+if(count($cartArray) === 1 )
+{   
+    echo " item";
+}
+else
+{
+    echo " items";
+}
+echo " - $<b>";
+echo $cartPrice;
+echo "</b><ul class='dropdown'><li>You have " . count($cartArray);
+if(count($cartArray) === 1 )
+{   
+    echo " item";
+}
+else
+{
+    echo " items";
+}
+echo " in your Shopping cart</li>";
+}
+else
+{
+    echo "0 item(s) - $0.00";
+    echo "<ul class='dropdown'><li>You have No items in your Shopping cart</li>";
+}
+?>
+                    </ul></div></p>
+              </div>
+              <script type="text/javascript">
+            function DropDown(el) {
+                this.dd = el;
+                this.initEvents();
+            }
+            DropDown.prototype = {
+                initEvents : function() {
+                    var obj = this;
+
+                    obj.dd.on('click', function(event){
+                        $(this).toggleClass('active');
+                        event.stopPropagation();
+                    }); 
+                }
+            }
+
+            $(function() {
+
+                var dd = new DropDown( $('#dd') );
+
+                $(document).click(function() {
+                    // all dropdowns
+                    $('.wrapper-dropdown-2').removeClass('active');
+                });
+
+            });
+
+        </script>
+     <div class="clear"></div>
+  </div>
+    <div class="header_bottom">
+            <div class="menu">
+                <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="delivery.html">Delivery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <!-- <div class="search_box">
+                <form>
+                    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                </form>
+            </div>
+             -->
+            <div class="clear"></div>
+         </div>     
+
+
+
+
+<div class="main">
+
+    <div class="content">
+  
+    <div class="section group">
+
+  
+
+  <div align:'center'>
+ <br>
+ <div class="panel panel-danger"></div>
+<div class="container">
+    <div class='row'>
+        <div class='col-md-4'></div>
+        <div class='col-md-4'>
+          <div class='col-md-12 form-group'>
+          <h1>Payment page</h1>
+          <hr class="featurette-divider"></hr>
+          <p>NOTE: This snippet was created with the help of derwiki's Stripe form.</p>
+          <hr class="featurette-divider"></hr>
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+          Step 4: Payment
+          </div><br>
+          <hr class="featurette-divider"></hr></div>
+          <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
+          <form accept-charset="UTF-8" action="/" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_bQQaTxnaZlzv4FnnuZ28LFHccVSaj" id="payment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="_method" type="hidden" value="PUT" /><input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" /></div>
+            <div class='form-row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>Name on Card</label>
+                <input class='form-control' size='4' type='text'>
+              </div>
+            </div>
+            <div class='form-row'>
+              <div class='col-xs-12 form-group card required'>
+                <label class='control-label'>Card Number</label>
+                <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+              </div>
+            </div>
+             <div class='form-row'>
+              <div class='col-xs-12 form-group card required'>
+                <label class='control-label'>Billing Address</label>
+                <input autocomplete='off' class='form-control' size='20' type='text'>
+              </div>
+            </div>
+            <div class='form-row'>
+              <div class='col-xs-4 form-group cvc required'>
+                <label class='control-label'>CVC</label>
+                <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+              </div>
+              <div class='col-xs-4 form-group expiration required'>
+                <label class='control-label'>Expiration</label>
+                <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+              </div>
+              <div class='col-xs-4 form-group expiration required'>
+                <label class='control-label'> </label>
+                <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+              </div>
+            </div>
+     
+           
+            <div class='form-row'>
+              <div class='col-md-12 form-group'>
+                         <hr class="featurette-divider"></hr>
+                <button class='form-control btn btn-success submit-button' disabled><span class="badge">Your total today:<b> $ 
+<?php 
+echo $_SESSION['cart-price'];
+?>
+</b>
+                </span></button>
+                <button class='form-control btn btn-primary submit-button' type='submit'> Pay »</button>
+                
+              </div>
+            </div>
+            
+            <div class='form-row'>
+              <div class='col-md-12 error form-group hide'>
+                <div class='alert-danger alert'>
+                  Please correct the errors and try again.
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        
+        <div class='col-md-4'></div>
+    </div>
+</div>
+</div>
+<br>
+<div class="panel panel-danger"></div> 
+
+  </div>
+    
+</div>  
+
+<div class="footer">
+      <div class="wrap">    
+         <div class="section group">
+                <div class="col_1_of_4 span_1_of_4">
+                    <h4>Contact</h4>
+                        <ul>
+                            <li><span>+91-123-456789</span></li>
+                            <li><span>+00-123-000000</span></li>
+                        </ul>
+                </div>
+                <div class="col_1_of_4 span_1_of_4">
+                    <h4>Follow Us</h4>
+                          <a href="#" target="_blank"><img src="images/facebook.png" alt="" /></a>
+                          <a href="#" target="_blank"><img src="images/twitter.png" alt="" /></a>
+                          <a href="#" target="_blank"><img src="images/skype.png" alt="" /> </a>
+                          <a href="#" target="_blank"> <img src="images/dribbble.png" alt="" /></a>
+                          <a href="#" target="_blank"> <img src="images/linkedin.png" alt="" /></a>
+                          <div class="clear"></div>
+                </div>
+            </div>          
+        </div>
+        <div class="copy_right">
+                <p>SEATECH � All rights Reserved | Design by  Ameya Parab, Ekta Dharia & Suraj Sangani </p>
+           </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {          
+            $().UItoTop({ easingType: 'easeOutQuart' });
+            
+        });
+    </script>
+    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+</body>
+</html>
+
