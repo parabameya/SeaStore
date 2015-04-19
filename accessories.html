@@ -24,7 +24,7 @@ $status=$_SESSION['loginstatus'];
 
 <body>
 
-  <div class="wrap">
+ <div class="wrap">
 	<div class="header">
 		<div class="headertop_desc">
 			<div class="call">
@@ -34,14 +34,14 @@ $status=$_SESSION['loginstatus'];
 			<div class="account_desc">
 				<ul>
 	        <?php 
-	        if ($status) {   ?>
+			
+	        if ($status) { ?>
             <li><a href="php/logout.php" title="">Logout</a></li>            
         <?php } else { ?>
             <li><a href="login.html" title="">Login/Register</a></li>   
         <?php } ?>
-					<li><a href="#">Delivery</a></li>
-					<li><a href="#">Checkout</a></li>
-					<li><a href="#">My Account</a></li>
+					<li><a href="checkout.html">Checkout</a></li>
+					<li><a href="account.html">My Account</a></li>
 				</ul>
 			</div>
 		</div>
@@ -49,7 +49,7 @@ $status=$_SESSION['loginstatus'];
 			<div class="logo">
 				<a href="index.html"><img src="images/logo.jpg" alt="" /></a>
 			</div>
-			  <div class="cart">
+						  <div class="cart">
 			  	   <p>Welcome 
     <?php 
 		if(isset($_SESSION['username']))
@@ -63,30 +63,31 @@ $status=$_SESSION['loginstatus'];
 <?php
 if(isset($_SESSION['cart']))
 {
-$cart=$_SESSION['cart'];
-$cartPrice=$_SESSION['cart-price'];
-$cartArray= explode(",", $cart);
-echo count($cartArray);
-if(count($cartArray) === 1 )
-{	
-	echo " item";
-}
-else
-{
-	echo " items";
-}
-echo " - $<b>";
-echo $cartPrice;
-echo "</b><ul class='dropdown'><li>You have " . count($cartArray);
-if(count($cartArray) === 1 )
-{	
-	echo " item";
-}
-else
-{
-	echo " items";
-}
-echo " in your Shopping cart</li>";
+	$cart=$_SESSION['cart'];
+	$cartPrice=$_SESSION['cart-price'];
+	$cartArray= explode(",", $cart);
+	echo count($cartArray);
+	if(count($cartArray) === 1 )
+	{	
+		echo " item";
+	}
+	else
+	{
+		echo " items";
+	}
+	echo " - $<b>";
+	echo $cartPrice;
+	echo "</b><ul class='dropdown'><li>You have " . count($cartArray);
+	if(count($cartArray) === 1 )
+	{	
+		echo " item";
+	}
+	else
+	{
+		echo " items";
+	}
+	echo " in your Shopping cart</li>";
+	echo "<li><b><a href=checkout.html>Checkout</a></b></li>";
 }
 else
 {
@@ -95,7 +96,7 @@ else
 }
 ?>
 					</ul></div></p>
-		</div>
+			  </div>
 			  <script type="text/javascript">
 			function DropDown(el) {
 				this.dd = el;
@@ -131,7 +132,7 @@ else
 	     		<ul>
 			    	<li class="active"><a href="index.html">Home</a></li>
 			    	<li><a href="about.html">About</a></li>
-			    	<li><a href="delivery.html">Delivery</a></li>
+			    	<li><a href="faq.html">FAQ</a></li>
 			    	<li><a href="contact.html">Contact</a></li>
      			</ul>
 	     	</div>

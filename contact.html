@@ -41,17 +41,16 @@ $status=$_SESSION['loginstatus'];
         <?php } else { ?>
             <li><a href="login.html" title="">Login/Register</a></li>   
         <?php } ?>
-					<li><a href="#">Delivery</a></li>
-					<li><a href="#">Checkout</a></li>
-					<li><a href="#">My Account</a></li>
+					<li><a href="checkout.html">Checkout</a></li>
+					<li><a href="account.html">My Account</a></li>
 				</ul>
 			</div>
 		</div>
-		<div class="header_top">
+	<div class="header_top">
 			<div class="logo">
 				<a href="index.html"><img src="images/logo.jpg" alt="" /></a>
 			</div>
-			  <div class="cart">
+						  <div class="cart">
 			  	   <p>Welcome 
     <?php 
 		if(isset($_SESSION['username']))
@@ -61,9 +60,42 @@ $status=$_SESSION['loginstatus'];
 		echo '</span>';
 		?> to our Online Store! 
 
-		<span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
-			  	   	<ul class="dropdown">
-							<li>you have no items in your Shopping cart</li>
+		<span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 
+<?php
+if(isset($_SESSION['cart']))
+{
+	$cart=$_SESSION['cart'];
+	$cartPrice=$_SESSION['cart-price'];
+	$cartArray= explode(",", $cart);
+	echo count($cartArray);
+	if(count($cartArray) === 1 )
+	{	
+		echo " item";
+	}
+	else
+	{
+		echo " items";
+	}
+	echo " - $<b>";
+	echo $cartPrice;
+	echo "</b><ul class='dropdown'><li>You have " . count($cartArray);
+	if(count($cartArray) === 1 )
+	{	
+		echo " item";
+	}
+	else
+	{
+		echo " items";
+	}
+	echo " in your Shopping cart</li>";
+	echo "<li><b><a href=checkout.html>Checkout</a></b></li>";
+}
+else
+{
+	echo "0 item(s) - $0.00";
+	echo "<ul class='dropdown'><li>You have No items in your Shopping cart</li>";
+}
+?>
 					</ul></div></p>
 			  </div>
 			  <script type="text/javascript">
@@ -101,7 +133,7 @@ $status=$_SESSION['loginstatus'];
 	     		<ul>
 			    	<li><a href="index.html">Home</a></li>
 			    	<li><a href="about.html">About</a></li>
-			    	<li><a href="delivery.html">Delivery</a></li>
+			    	<li><a href="faq.html">FAQ</a></li>
 			    	<li class="active"><a href="contact.html">Contact</a></li>
      			</ul>
 	     	</div>

@@ -1,7 +1,19 @@
+var loginStatus=false;
 
 $(document).ready(function(){
-document.getElementById("login").addEventListener("click", validate);
-document.getElementById("register").addEventListener("click", register);
+	
+	checklogin();
+if(!loginStatus)
+{
+	document.getElementById("login").addEventListener("click", validate);
+	document.getElementById("register").addEventListener("click", register);
+}
+else
+{
+	window.location = 'http://localhost:8080/SeaStoreGit/index.html';
+}
+
+
 // $("#username").focus(function(){
 // 		if($(this).attr("id")=="username"){
 // 			var myid = this.id;
@@ -59,13 +71,26 @@ document.getElementById("register").addEventListener("click", register);
 // 	});
 
 
-
-
-
-
-
 });
 
+function checklogin()
+{
+	$.ajax({
+			url: "php/loginstatus.php",
+			type: "POST",
+			data: {},
+			dataType: "text",
+			success: changeStatus
+		});
+
+}
+
+function changeStatus(data)
+{
+	if(data == 1)
+		loginStatus=true;
+
+}
 
 function validate(){
 	var username = document.getElementById("username").value;

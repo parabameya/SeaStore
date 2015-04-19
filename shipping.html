@@ -42,7 +42,6 @@ $status=$_SESSION['loginstatus'];
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/startstop-slider.js"></script>
-<script type="text/javascript" src="js/cart.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
@@ -189,11 +188,11 @@ else
 <div class="stepwizard">
     <div class="stepwizard-row">
         <div class="stepwizard-step">
-            <a href='checkout.html'><button type="button" class="btn btn-primary btn-circle">1</button></a>
+            <a href='checkout.html'><button type="button" class="btn btn-default btn-circle">1</button></a>
             <p>Cart</p>
         </div>
         <div class="stepwizard-step">
-            <a href='shipping.html'><button type="button" class="btn btn-default btn-circle">2</button></a>
+            <a href='shipping.html'><button type="button" class="btn btn-primary btn-circle">2</button></a>
             <p>Shipping</p>
         </div>
         <div class="stepwizard-step">
@@ -204,11 +203,47 @@ else
 </div>
 
   <div align:'center'>
- <!--
-cart details
-cart to be editable
--->
+ 
+<div class="container">
+  <div class="row">
+     <form class="form-horizontal">
+            <fieldset>
+                <!-- Address form -->
+         
+                <h2>Address</h2>
+         
+                <!-- full-name input-->
+                <div class="control-group">
+                    <label class="control-label">Full Name</label>
+                    <div class="controls">
+                        <input id="full-name" name="full-name" type="text" placeholder="full name"
+                        class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- address-line1 input-->
+                <div class="control-group">
+                    <label class="control-label">Address</label>
+                    <div class="controls">
+                        <input id="address-line1" name="address-line1" type="text" placeholder="address line 1"
+                        class="input-xlarge">
+                        <p class="help-block">Street address, P.O. box, company name,City c/o</p>
+                    </div>
+                </div>
+  <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="pull-right">
+                <button type="submit" class="btn btn-primary">Next</button>
+              </div>
+            </div>
+          </div>
+            </fieldset>
+        </form>
+  </div>
 </div>
+
+</div>
+
 <br>
 <div class="panel panel-danger"></div> 
 
