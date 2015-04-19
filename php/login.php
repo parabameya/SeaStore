@@ -21,17 +21,15 @@ $password = $_POST["Pwd"];
 		{			
 			$_SESSION['username']=$row["name"];
 		}
-		elseif (strlen($row["email"])>1) {
+		if (strlen($row["email"])>1) {
 			$_SESSION['email']=$row["email"];
 		}
-		elseif (strlen($row["address"])>1) {
+		if (strlen($row["address"])>1) {
 			$_SESSION['address']=$row["address"];
 		}
-		elseif (strlen($row["phoneno"])>1) {
+		if (strlen($row["phoneno"])>1) {
 			$_SESSION['phoneno']=$row["phoneno"];
 		}
-		else
-		{}
 		$json[] = $row;	
 	}
 	//sending a JSON response to the client
