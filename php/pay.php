@@ -14,10 +14,7 @@ try{
 	{
 		$purchaseID=rand();
 		$query = "insert into purchase VALUES ('" . $username . "'," . $cartArray[$x] . "," . $quantity .  "," . $purchaseID . ", CURDATE())";
-	
-
 		$result = mysql_query($query) or die(error_get_last());
-
 		unset($purchaseID);
 		unset($query);
 		unset($result);		
