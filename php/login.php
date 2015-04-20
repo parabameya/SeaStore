@@ -21,6 +21,10 @@ $password = $_POST["Pwd"];
 		{			
 			$_SESSION['username']=$row["name"];
 		}
+		if(strlen($row["username"])>1)
+		{			
+			$_SESSION['userID']=$row["username"];
+		}	
 		if (strlen($row["email"])>1) {
 			$_SESSION['email']=$row["email"];
 		}

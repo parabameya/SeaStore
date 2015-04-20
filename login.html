@@ -68,25 +68,59 @@
                       </form>                
                     </div>
                     <div class="tab-pane fade" id="create">
-                      <form id="tab">
-                        <label>Username</label>
-                        <input type="text" value="" id="reg_username" class="input-xlarge">
-                        <label>Password</label>
-                        <input type="password" value="" id="reg_password" class="input-xlarge">
-                        <label>Name</label>
-                        <input type="text" value="" id="name" class="input-xlarge">
-                        <label>Email</label>
-                        <input type="text" value="" id="email" class="input-xlarge">
-                        <label>Phone No</label>
-                        <input type="text" value="" id="phoneno" class="input-xlarge">
-                        <label>Address</label><br/>
-                        <textarea rows="5" id="address" class="input-xlarge">
-                        </textarea>
+
+                      <fieldset>
+                          <div id="legend">
+                            <legend class="">Register</legend>
+                          </div>    
+                          <div class="control-group">
+                            <!-- Username -->
+                            <label class="control-label"  for="reg_username">Username</label>
+                            <div class="controls">
+                              <input type="text" id="reg_username" name="reg_username" placeholder="" class="input-xlarge">
+                            </div>
+                          </div>
      
-                        <div>
-                          <br/>
-                          <button class="btn btn-primary" id="register">Create Account</button>
-                        </div>
+                           <div class="control-group">
+                            <!-- Password-->
+                            <label class="control-label" for="reg_password">Password</label>
+                            <div class="controls">
+                              <input type="password" id="reg_password" name="reg_password" placeholder="" class="input-xlarge">
+                            </div>
+                          </div>
+
+                           <div class="control-group">
+                            <!-- Password-->
+                            <label class="control-label" for="name">Name</label>
+                            <div class="controls">
+                              <input type="text" id="name" name="name" placeholder="" class="input-xlarge">
+                            </div>
+                          </div>
+
+                           <div class="control-group">
+                            <!-- Password-->
+                            <label class="control-label" for="phoneno">Phone No</label>
+                            <div class="controls">
+                              <input type="text" id="phoneno" name="phoneno" placeholder="" class="input-xlarge">
+                            </div>
+                          </div>
+
+                          <div class="control-group">
+                            <!-- Password-->
+                            <label class="control-label" for="address">Address</label>
+                            <div class="controls">
+                              <textarea id="address" name="address" class="input-xxlarge" rows="5" ></textarea>
+                            </div>
+                          </div>
+
+                          <div class="control-group">
+                            <!-- Button -->
+                            <div class="controls">
+                              <button class="btn btn-primary" id="register">Create Account</button>
+                            </div>
+                          </div>
+                        </fieldset>
+
                       </form>
                     </div>
                 </div>

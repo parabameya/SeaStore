@@ -28,7 +28,6 @@ session_start();
 if(!isset($_SESSION['loginstatus']))
     $_SESSION['loginstatus']=false;
 $status=$_SESSION['loginstatus'];
-
 ?>
 
 <!DOCTYPE HTML>
@@ -224,7 +223,13 @@ else
             <div class='form-row'>
               <div class='col-xs-12 form-group required'>
                 <label class='control-label'>Name on Card</label>
-                <input class='form-control' size='4' type='text'>
+                <input class='form-control' size='4' type='text' value=
+                 <?php
+                    echo "'";
+                    echo $_SESSION['username'];
+                    echo "'";
+                ?>
+                >
               </div>
             </div>
             <div class='form-row'>
@@ -236,7 +241,13 @@ else
              <div class='form-row'>
               <div class='col-xs-12 form-group card required'>
                 <label class='control-label'>Billing Address</label>
-                <input autocomplete='off' class='form-control' size='20' type='text'>
+                <input autocomplete='off' class='form-control' size='20' type='text' value=
+                <?php
+                    echo "'";
+                    echo $_SESSION['address'];
+                    echo "'";
+                ?>
+                >
               </div>
             </div>
             <div class='form-row'>
@@ -264,7 +275,7 @@ echo $_SESSION['cart-price'];
 ?>
 </b>
                 </span></button>
-                <button class='form-control btn btn-primary submit-button' type="submit"> Pay »</button>
+                <button class='form-control btn btn-primary submit-button' type="submit" > Pay »</button>
                 
               </div>
             </div>

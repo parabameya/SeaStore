@@ -4,15 +4,16 @@ function pay()
 			url: "php/pay.php",
 			type: "POST",
 			data: {},
-			dataType:"boolean",
+			dataType:"text",
 			success: fnsuccess
 		});
 }
 
-function success(data)
+function fnsuccess(data)
 {
-	if(data)
-		alert("Item Successfully Purchased. Your Goods will be delivered in 3 business days");
-	else
+	console.log(data);
+	if(data=="ERROR")
 		alert("Something went wrong");
+	else
+		alert("Item Successfully Purchased. Your Goods will be delivered in 3 business days");
 }

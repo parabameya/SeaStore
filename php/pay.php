@@ -1,21 +1,29 @@
 <?php
 //including the connection file
 include "connect.php";
-
+session_start();
 //validating whether the post value is set and not null
 try{
 	$products = $_SESSION['cart'];
-	
+	$username = $_SESSION['userID'];
+	$date=date("m/d/Y");
 	//querying the database
-	$query = "insert into user VALUES (" . $username . "," . $name . "," . $email . "," . $password . "," . $address . "," . $phoneno . ")";
-	$result = mysql_query($query) or die(error_get_last());
-	if (query($sql) === TRUE) {
-	echo "New record created successfully";
-	}
-	else
+	$cartArray = explode(",", $products);
+	$quantity=1;
+	echo $username;
+
+	for ($x = 0; $x < count($cartArray); $x++) 
 	{
-		echo "Error";
+		$purchaseID=rand();
+		$query = "insert into purchase VALUES (" . $username . "," . $cartArray[0] . "," . $quantity .  "," . $purchaseID . ", CURDATE())";
+		$result = mysql_query($query) or die(error_get_last());
+	
+		unset($purchaseID);
+		unset($query);
+		unset($result);		
 	}
+	unset($_SESSION['cart']);	
+	unset($_SESSION['cart-price']);		
 	mysql_close($conn);
 }
 catch(Exception $e)
