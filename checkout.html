@@ -42,11 +42,11 @@ $status=$_SESSION['loginstatus'];
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/startstop-slider.js"></script>
-<script type="text/javascript" src="js/cart.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/cart.js"></script>
 </head>
 <!-- Credit card form -->
 <body>
@@ -197,12 +197,19 @@ else
     </div>
 </div>
 
-  <div align:'center'>
- <!--
-cart details
-cart to be editable
--->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover" id="add_rows">
+                  
+
+            </table>
+        </div>
+    </div>
 </div>
+
+
 <br>
 <div class="panel panel-danger"></div> 
 

@@ -1,16 +1,3 @@
 $(document).ready(function(){
     
 	});
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
