@@ -21,8 +21,9 @@ try{
 	}
 
 	unset($_SESSION['cart']);	
-	unset($_SESSION['cart-price']);		
+	unset($_SESSION['cart-price']);
 	mysql_close($conn);
+	echo "SUCCESS";
 }
 catch(Exception $e)
 {

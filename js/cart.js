@@ -13,15 +13,12 @@ $.ajax({
 
 function reloadPage(data)
 {
-	console.log(data);
 	location.reload();
-
 }
 
 
 function fnsuccess(data)
 {
-	
 	 obj = JSON.parse(data);
 var div=document.getElementById("add_rows");
 var tablehead="<thead><tr><th>Product</th><th>Quantity</th><th class='text-center'>Price</th><th class='text-center'>Total</th><th> </th></tr></thead><tbody>";

@@ -1,19 +1,18 @@
 function pay()
 {
-	$.ajax({
+	 var r = confirm("Confirm Order");
+	 if (r == true) 
+	 {
+		$.ajax({
 			url: "php/pay.php",
-			type: "POST",
-			data: {},
-			dataType:"text",
-			success: fnsuccess
+			type: "POST"
 		});
-}
-
-function fnsuccess(data)
-{
-	console.log(data);
-	if(data=="ERROR")
-		alert("Something went wrong");
-	else
+	
 		alert("Item Successfully Purchased. Your Goods will be delivered in 3 business days");
+		window.location="http://localhost:8080/SeaStoreGit/index.html";
+	}
+	else
+	{
+		alert("Please review your order");
+	}
 }
