@@ -6,22 +6,23 @@ session_start();
 try{
 	$products = $_SESSION['cart'];
 	$username = $_SESSION['userID'];
-	$date=date("m/d/Y");
 	//querying the database
 	$cartArray = explode(",", $products);
 	$quantity=1;
-	echo $username;
-
+	
 	for ($x = 0; $x < count($cartArray); $x++) 
 	{
 		$purchaseID=rand();
-		$query = "insert into purchase VALUES (" . $username . "," . $cartArray[0] . "," . $quantity .  "," . $purchaseID . ", CURDATE())";
-		$result = mysql_query($query) or die(error_get_last());
+		$query = "insert into purchase VALUES ('" . $username . "'," . $cartArray[$x] . "," . $quantity .  "," . $purchaseID . ", CURDATE())";
 	
+
+		$result = mysql_query($query) or die(error_get_last());
+
 		unset($purchaseID);
 		unset($query);
 		unset($result);		
 	}
+
 	unset($_SESSION['cart']);	
 	unset($_SESSION['cart-price']);		
 	mysql_close($conn);

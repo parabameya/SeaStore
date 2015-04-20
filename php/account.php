@@ -7,9 +7,9 @@ include "connect.php";
 //validating whether the post value is set and not null
 try{
 	session_start();
-$username = $_SESSION["username"];
+	$username = $_SESSION["userID"];
 	//querying the database
-	$query = "select date, purchase_id, producttitle, quantity, productprice from purchase , products where username = " . $username . " and purchase.product_id = products.product_id ";
+	$query = "select date, purchase_id, producttitle, quantity, productprice from purchase , products where username = '" . $username . "' and purchase.product_id = products.product_id ";
 
 	$result = mysql_query($query) or die(error_get_last());
 	//creating a JSON array
