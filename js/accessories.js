@@ -17,8 +17,11 @@ function fetchData(data)
 obj = JSON.parse(data);
 var div=document.getElementById("main_php_products");
 var newdiv;
+var breakline="<div class='row'><div class='col-xs-6'></div><div class='col-xs-6'></div></div>";
 $.each(obj, function(index, element)
 	{	
+		if(index %3 ==0)
+			$(div).append(breakline);
 		newdiv="<div class='grid_1_of_3 images_1_of_3'>";
 		newdiv+="<form method='POST' onSubmit='updateCart("+obj[index].product_id+","+obj[index].productprice+")'>"
 		newdiv+="<img width='250px' height='250px' src='";
