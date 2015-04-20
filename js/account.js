@@ -1,7 +1,13 @@
+$(document).ready(function() {
+   
+pageLoad();
+    
+} );
 
 
 
-$(document).ready(pageLoad);
+
+
 
 function pageLoad()
 {
@@ -43,5 +49,6 @@ $.each(obj, function(index, element)
 		$(tablebody).append(newrow);
 		newrow=null;
 	});
+$('#table-example').dataTable();
 }
 
