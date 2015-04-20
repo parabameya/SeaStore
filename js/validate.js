@@ -96,7 +96,7 @@ var validatePhone = function(text){
 	};
 	
 var validateName = function(text){
-	return /^[a-zA-Z]+$/.test(text.val());
+	return /^[a-zA-Z\ ]+$/.test(text.val());
 	};
 
 $(document).ready(function(){
