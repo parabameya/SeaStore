@@ -10,17 +10,14 @@ try{
 	$email = $_POST["Email"];
 	$phoneno = $_POST["PhoneNo"];
 	$address = $_POST["Address"];
+	$usertype= "NULL";
 
 	//querying the database
-	$query = "insert into user VALUES (" . $username . "," . $name . "," . $email . "," . $password . "," . $address . "," . $phoneno . ")";
+	$query = "insert into user VALUES (" . $username . "," . $name . "," . $email . "," . $password . "," . $address . "," . $phoneno . "," . $usertype . ")";
 	$result = mysql_query($query) or die(error_get_last());
-	if (query($sql) === TRUE) {
+	
 	echo "New record created successfully";
-	}
-	else
-	{
-		echo "Error";
-	}
+	
 	mysql_close($conn);
 }
 catch(Exception $e)

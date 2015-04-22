@@ -46,6 +46,7 @@ $password = $_POST["Pwd"];
 			$_SESSION['loginstatus']=true;
 		//	echo "SUCCESS";
 		}
+
 	 echo json_encode($json);
 	mysql_close($conn);
 }
