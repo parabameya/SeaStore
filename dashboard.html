@@ -1,0 +1,156 @@
+<?php
+session_start();
+if(!isset($_SESSION['loginstatus']))
+	$_SESSION['loginstatus']=false;
+$status=$_SESSION['loginstatus'];
+
+?>
+
+<!DOCTYPE HTML>
+<head>
+<title>SEA TECH</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/startstop-slider.js"></script>
+
+<script type="text/javascript" src="js/media/js/jquery.js"></script>
+<script type="text/javascript" src="js/media/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" src="js/dashboard.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="js/media/css/jquery.dataTables.css">
+</head>
+
+<body>
+
+  <div class="wrap">
+	<div class="header">
+		<div class="headertop_desc">
+			<div class="call">
+				 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
+			</div>
+			
+			<div class="account_desc">
+				<ul>
+	        <?php 
+			
+	        if ($status) { ?>
+            <li><a href="php/logout.php" title="">Logout</a></li>            
+        <?php } else { ?>
+            <li><a href="login.html" title="">Login/Register</a></li>   
+        <?php } ?>
+					<li><a href="checkout.html">Checkout</a></li>
+					<li><a href="account.html">My Account</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header_top">
+			<div class="logo">
+				<a href="index.html"><img src="images/logo.jpg" alt="" /></a>
+			</div>
+						  <div class="cart">
+			  	   <p>Welcome 
+    <?php 
+		if(isset($_SESSION['username']))
+			$user=$_SESSION['username'];
+		echo '<span>';
+		echo $user;
+		echo '</span>';
+		?> to our Online Store! 
+
+		</p>
+			  </div>
+			
+	 <div class="clear"></div>
+  </div>
+	<div class="header_bottom">
+	     	<div class="menu">
+	     		<ul>
+			    	<li class="active"><a href="about.html">About</a></li>
+			    	<li><a href="faq.html">FAQ</a></li>
+			    	<li><a href="contact.html">Contact</a></li>
+     			</ul>
+	     	</div>
+	     	
+	     	<div class="clear"></div>
+	</div>	 
+<div>
+<p>Hello  <?php 
+		if(isset($_SESSION['username']))
+			$user=$_SESSION['username'];
+		else
+			$user="Guest";
+		echo '<span><b>';
+		echo $user;
+		echo '</b></span>';
+		?>
+	</p>
+
+
+	  <?php 
+		if(isset($_SESSION['admin'])) //set here admin 
+		{
+			echo '<p>Products available are as listed</p>';
+			echo "<table class='table table-striped ' id='table-example'>";
+			echo "<thead>";
+			echo "<tr>";
+			echo "<th>ID</th>";
+			echo "<th>Description</th><th>Type</th><th>Title</th><th>Price</th>";
+			echo "</tr></thead>";
+			echo "<tbody id='account_details'>";
+			echo "</tbody></table>";
+		}
+		else
+			echo '<p><h2>Please Log In as Admin user</h2></p>'
+	?> 
+	<?php 
+	if(isset($_SESSION['admin']))
+		echo "<p><a href='php/new.php'>Add a new record</a></p>";
+	?>
+
+	
+</div>
+
+
+
+	        <div class="footer">
+   	  <div class="wrap">	
+	     <div class="section group">
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>Contact</h4>
+						<ul>
+                          <li><span>+1(972)876-2149</span></li>
+                          <li><span>+1(469)347-1768</span></li>
+                          <li><span>+1(281)906-4954</span></li>
+                        </ul>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>Follow Us</h4>
+					      <a href="#" target="_blank"><img src="images/facebook.png" alt="" /></a>
+					      <a href="#" target="_blank"><img src="images/twitter.png" alt="" /></a>
+					      <a href="#" target="_blank"><img src="images/skype.png" alt="" /> </a>
+					      <a href="#" target="_blank"> <img src="images/dribbble.png" alt="" /></a>
+					      <a href="#" target="_blank"> <img src="images/linkedin.png" alt="" /></a>
+					      <div class="clear"></div>
+   	 			</div>
+			</div>			
+        </div>
+        <div class="copy_right">
+				<p>SEATECH © All rights Reserved | Design by  Ameya Parab, Ekta Dharia & Suraj Sangani </p>
+		   </div>
+    </div>
+    <script type="text/javascript">
+		$(document).ready(function() {			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+</body>
+</html>

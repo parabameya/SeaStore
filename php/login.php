@@ -34,6 +34,10 @@ $password = $_POST["Pwd"];
 		if (strlen($row["phoneno"])>1) {
 			$_SESSION['phoneno']=$row["phoneno"];
 		}
+		if (strlen($row["usertype"])>1) {
+			if($row["usertype"]!= "NULL")
+			$_SESSION['admin']=$row["usertype"];
+		}
 		$json[] = $row;	
 	}
 	//sending a JSON response to the client
